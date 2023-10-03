@@ -1,0 +1,58 @@
+{% load static %}
+{% load django_bootstrap5 %}
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Ane on call</title>
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  <style>
+    .navbar-custom-bg {
+      background-color: #2454cd;
+      height: 120px;
+      margin-bottom: 30px;
+    }
+
+    .navbar-brand {
+      font-size: 48px;
+      color: white;
+    }
+
+    .logout-link {
+      font-size: 32px;
+    }
+
+    .custom-button {
+      background-color: lightskyblue;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+  </style>
+  {% block extraheader %}
+  {% endblock %}
+</head>
+
+<body>
+  <nav class="navbar navbar-custom-bg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">筑波大学麻酔科当直サイト</a>
+      {% if login_user.is_anonymous %}
+      {% else %}
+      <a href="{% url 'logout' %}" class="custom-button">ログアウト</a>
+      {% endif %}
+      </form>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      {% block main %}
+      {% endblock %}
+    </div>
+  </main>
+</body>
+
+</html>

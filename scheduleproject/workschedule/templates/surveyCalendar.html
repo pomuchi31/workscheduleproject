@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block extraheader %}
+{% load static %}
+
+    <!-- FullCalendar CSS ファイルの読み込み -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css">
+
+    <!-- jQuery の読み込み（FullCalendar の依存関係）-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha512-6S7vYeq3+OnrjLVz1dX6Bb2Fno/8q5bZlpx9+0sJj+5dOW3vCzkpAeA6lgAsGMGzL6E6JjnkAOKzGIY1vuNfaw==" crossorigin="anonymous"></script>
+
+    <!-- FullCalendar JavaScript ファイルの読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+    <script src="{% static 'workschedule/js/surveyCalendar.js' %}"></script>
+    {% endblock %}
+    {% block main %}
+
+    <div id='calendar'></div>
+
+    <div class="modal" id="modal-template">
+        <div class="modal__title">
+          <label>タイトル： <input type="text" id="title"></label>
+        </div>
+        <div class="modal__color">
+          <label>背景色： <input type="color" id="color"></label>
+        </div>
+        <div class="modal__times">
+          <label>開始： <input type="date" id="start"></label>
+          <label>終了： <input type="date" id="end"></label>
+        </div>
+            
+        <div class="modal-action-buttons">
+          <button class="modal-action-buttons__button save" id="save">保存</button>
+          <button class="modal-action-buttons__button delete" id="delete">削除</button>
+          <button class="modal-action-buttons close material-icons" id="cancel">cancel</button>
+        </div>
+      </div>
+
+{% endblock %}
